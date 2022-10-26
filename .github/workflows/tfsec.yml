@@ -1,5 +1,8 @@
 name: tfsec scan report
 on:
+  push:
+      branches:
+        - Development
   pull_request:
 jobs:
   tfsec:
@@ -16,7 +19,7 @@ jobs:
           persist-credentials: false
 
       - name: tfsec scan
-        uses: aquasecurity/tfsec-sarif-action@v0.1.0
+        uses: aquasecurity/tfsec-sarif-action@v0.1.3
         with:
           sarif_file: tfsec.sarif          
           full_repo_scan: true
